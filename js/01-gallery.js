@@ -39,6 +39,13 @@ const instance = basicLightbox.create(` <img> `),
                
     gallery.addEventListener("click", (ev) => {
       ev.preventDefault();
-      modalImage.src = ev.target.dataset.source;
+      modalImage.src = ev.target.dataset.source; //practic obtinem url ul 
       instance.show();
+    });
+
+    gallery.addEventListener("keydown", event => {
+        if(event.code === "Escape" && instance.visible()){
+            event.preventDefault();
+            instance.close();
+        }
     });
